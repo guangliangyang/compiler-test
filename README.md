@@ -1,69 +1,131 @@
-# React + TypeScript + Vite
+# 编译器演示 - Compiler Demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+一个交互式Web编译器演示，帮助初学者理解编译原理。支持数学表达式的完整编译过程可视化。
 
-Currently, two official plugins are available:
+## 🎯 项目特色
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **6面板实时可视化** - 完整展示编译的每个阶段
+- **步进执行调试** - 逐步观察虚拟机执行过程
+- **栈状态跟踪** - 实时显示栈的变化情况
+- **中文界面** - 便于中文用户学习理解
+- **教育导向** - 专为编译原理教学设计
 
-## Expanding the ESLint configuration
+## 🚀 快速开始
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 安装和运行
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```bash
+# 克隆项目
+git clone https://github.com/guangliangyang/compiler-test.git
+cd compiler-test
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+# 安装依赖
+npm install
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# 启动开发服务器
+npm run dev
+
+# 浏览器访问
+http://localhost:5173/
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 构建生产版本
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
+npm run preview
 ```
+
+## 📊 功能展示
+
+### 支持的数学表达式
+
+```javascript
+5 + 3 * 2        // 运算符优先级: 结果 = 11
+(10 - 4) / 2     // 括号表达式: 结果 = 3
+2^3              // 幂运算: 结果 = 8
+-5 + 3           // 一元运算符: 结果 = -2
+3.14 * 2         // 浮点数: 结果 = 6.28
+((2 + 3) * 4)    // 嵌套括号: 结果 = 20
+```
+
+### 6个可视化面板
+
+1. **源代码输入** - 代码编辑区域
+2. **词法分析结果** - 彩色Token展示
+3. **语法分析树** - AST树形结构可视化
+4. **字节码生成** - 栈式指令列表，支持当前指令高亮
+5. **执行过程** - 步进调试，栈状态对比
+6. **输出结果** - 最终计算结果
+
+## 🛠️ 技术栈
+
+- **前端框架**: React 19 + TypeScript
+- **构建工具**: Vite 7
+- **样式框架**: Tailwind CSS 4
+- **编译器**: 自实现词法分析器、语法分析器、代码生成器
+- **虚拟机**: 栈式字节码执行引擎
+
+## 📚 教育价值
+
+### 编译原理核心概念演示
+
+- **词法分析**: 源码 → Token流
+- **语法分析**: Token流 → AST语法树
+- **代码生成**: AST → 字节码指令
+- **代码执行**: 字节码 → 栈式虚拟机执行
+
+### 学习亮点
+
+- 🔍 **可视化学习** - 每个编译阶段都有直观展示
+- 🐛 **调试体验** - 步进执行，观察栈变化
+- 🎯 **优先级理解** - 看懂为什么 `5+3*2=11` 而不是 `16`
+- 💡 **原理揭秘** - 了解编译器如何工作
+
+## 📁 项目结构
+
+```
+src/
+├── components/          # React组件
+│   ├── CodeEditor.tsx   # 代码编辑器
+│   ├── TokenDisplay.tsx # Token展示
+│   ├── ASTDisplay.tsx   # AST可视化
+│   ├── BytecodeDisplay.tsx # 字节码展示
+│   ├── ExecutionDisplay.tsx # 执行过程
+│   └── OutputDisplay.tsx # 结果输出
+├── compiler/           # 编译器核心
+│   ├── lexer.ts        # 词法分析器
+│   ├── parser.ts       # 语法分析器
+│   ├── codegen.ts      # 代码生成器
+│   ├── vm.ts           # 虚拟机
+│   └── stepvm.ts       # 步进虚拟机
+├── types/              # 类型定义
+└── App.tsx             # 主应用
+```
+
+## 🎓 使用示例
+
+1. **试试基本运算**: 输入 `5 + 3 * 2`
+   - 观察Token: `[NUMBER(5), PLUS(+), NUMBER(3), MULTIPLY(*), NUMBER(2)]`
+   - 查看AST: 乘法节点在加法节点右侧(优先级)
+   - 执行步骤: `PUSH 5` → `PUSH 3` → `PUSH 2` → `MUL` → `ADD`
+
+2. **括号改变优先级**: 输入 `(5 + 3) * 2`
+   - AST结构变化: 加法节点在乘法节点左侧
+   - 执行顺序: 先计算括号内加法，再乘法
+
+3. **步进调试**: 使用"上一步"/"下一步"按钮
+   - 观察每一步的栈状态变化
+   - 理解栈式计算机的工作原理
+
+## 🤝 贡献
+
+欢迎提交Issue和Pull Request来改进这个项目！
+
+## 📄 许可证
+
+MIT License
+
+## 📞 联系
+
+如有问题或建议，请创建Issue或联系项目维护者。
