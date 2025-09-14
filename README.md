@@ -1,153 +1,153 @@
-# 编译器演示 - Compiler Demo
+# Compiler Demo - Interactive Compiler Visualization
 
-一个交互式Web编译器演示，帮助初学者理解编译原理。支持数学表达式的完整编译过程可视化。
+An interactive web-based compiler demonstration that helps beginners understand compiler principles through complete compilation process visualization of mathematical expressions.
 
-## 📸 界面预览
+## 📸 Interface Preview
 
-![编译器演示界面](doc/interface.png)
+![Compiler Demo Interface](doc/interface.png)
 
-> **6面板实时可视化**: 词法分析 → 语法分析 → AST展示 → 字节码生成 → 执行过程 → 结果输出
+> **6-Panel Real-time Visualization**: Lexical Analysis → Syntax Analysis → AST Display → Bytecode Generation → Execution Process → Output Results
 
-## 🚀 在线体验
+## 🚀 Quick Start
 
 ```bash
-# 快速启动
+# Quick setup
 git clone https://github.com/guangliangyang/compiler-test.git
 cd compiler-test
 npm install && npm run dev
-# 访问 http://localhost:5173/
+# Visit http://localhost:5173/
 ```
 
-**试试这些表达式:**
-- `5 + 3 * 2` → 看运算符优先级
-- `(5 + 3) * 2` → 看括号如何改变结果
-- `2^3` → 体验幂运算
-- 使用步进按钮观察栈的变化过程！
+**Try these expressions:**
+- `5 + 3 * 2` → See operator precedence in action
+- `(5 + 3) * 2` → See how parentheses change results
+- `2^3` → Experience power operations
+- Use step buttons to observe stack changes in real-time!
 
-## 🎯 项目特色
+## 🎯 Key Features
 
-- **6面板实时可视化** - 完整展示编译的每个阶段
-- **步进执行调试** - 逐步观察虚拟机执行过程
-- **栈状态跟踪** - 实时显示栈的变化情况
-- **中文界面** - 便于中文用户学习理解
-- **教育导向** - 专为编译原理教学设计
+- **6-Panel Real-time Visualization** - Complete display of every compilation stage
+- **Step-by-step Execution Debugging** - Observe virtual machine execution process step by step
+- **Stack State Tracking** - Real-time display of stack changes
+- **Educational Interface** - Designed specifically for compiler theory teaching
+- **Interactive Learning** - Immediate feedback for better understanding
 
-## 🚀 快速开始
+## 🛠️ Installation & Setup
 
-### 安装和运行
+### Local Development
 
 ```bash
-# 克隆项目
+# Clone the repository
 git clone https://github.com/guangliangyang/compiler-test.git
 cd compiler-test
 
-# 安装依赖
+# Install dependencies
 npm install
 
-# 启动开发服务器
+# Start development server
 npm run dev
 
-# 浏览器访问
+# Open in browser
 http://localhost:5173/
 ```
 
-### 构建生产版本
+### Production Build
 
 ```bash
 npm run build
 npm run preview
 ```
 
-## 📊 功能展示
+## 📊 Feature Showcase
 
-### 支持的数学表达式
+### Supported Mathematical Expressions
 
 ```javascript
-5 + 3 * 2        // 运算符优先级: 结果 = 11
-(10 - 4) / 2     // 括号表达式: 结果 = 3
-2^3              // 幂运算: 结果 = 8
--5 + 3           // 一元运算符: 结果 = -2
-3.14 * 2         // 浮点数: 结果 = 6.28
-((2 + 3) * 4)    // 嵌套括号: 结果 = 20
+5 + 3 * 2        // Operator precedence: result = 11
+(10 - 4) / 2     // Parentheses expression: result = 3
+2^3              // Power operation: result = 8
+-5 + 3           // Unary operator: result = -2
+3.14 * 2         // Floating point: result = 6.28
+((2 + 3) * 4)    // Nested parentheses: result = 20
 ```
 
-### 6个可视化面板
+### 6 Visualization Panels
 
-1. **源代码输入** - 代码编辑区域
-2. **词法分析结果** - 彩色Token展示
-3. **语法分析树** - AST树形结构可视化
-4. **字节码生成** - 栈式指令列表，支持当前指令高亮
-5. **执行过程** - 步进调试，栈状态对比
-6. **输出结果** - 最终计算结果
+1. **Source Code Input** - Code editing area
+2. **Lexical Analysis Results** - Colorized token display
+3. **Syntax Analysis Tree** - AST tree structure visualization
+4. **Bytecode Generation** - Stack-based instruction list with current instruction highlighting
+5. **Execution Process** - Step-by-step debugging with stack state comparison
+6. **Output Results** - Final calculation results
 
-## 🛠️ 技术栈
+## 🛠️ Technology Stack
 
-- **前端框架**: React 19 + TypeScript
-- **构建工具**: Vite 7
-- **样式框架**: Tailwind CSS 4
-- **编译器**: 自实现词法分析器、语法分析器、代码生成器
-- **虚拟机**: 栈式字节码执行引擎
+- **Frontend Framework**: React 19 + TypeScript
+- **Build Tool**: Vite 7
+- **Styling Framework**: Tailwind CSS 4
+- **Compiler**: Custom-built lexer, parser, and code generator
+- **Virtual Machine**: Stack-based bytecode execution engine
 
-## 📚 教育价值
+## 📚 Educational Value
 
-### 编译原理核心概念演示
+### Core Compiler Concepts Demonstration
 
-- **词法分析**: 源码 → Token流
-- **语法分析**: Token流 → AST语法树
-- **代码生成**: AST → 字节码指令
-- **代码执行**: 字节码 → 栈式虚拟机执行
+- **Lexical Analysis**: Source Code → Token Stream
+- **Syntax Analysis**: Token Stream → AST Syntax Tree
+- **Code Generation**: AST → Bytecode Instructions
+- **Code Execution**: Bytecode → Stack-based Virtual Machine Execution
 
-### 学习亮点
+### Learning Highlights
 
-- 🔍 **可视化学习** - 每个编译阶段都有直观展示
-- 🐛 **调试体验** - 步进执行，观察栈变化
-- 🎯 **优先级理解** - 看懂为什么 `5+3*2=11` 而不是 `16`
-- 💡 **原理揭秘** - 了解编译器如何工作
+- 🔍 **Visual Learning** - Intuitive display of every compilation stage
+- 🐛 **Debugging Experience** - Step-by-step execution with stack observation
+- 🎯 **Precedence Understanding** - See why `5+3*2=11` instead of `16`
+- 💡 **Principle Revelation** - Understand how compilers actually work
 
-## 📁 项目结构
+## 📁 Project Structure
 
 ```
 src/
-├── components/          # React组件
-│   ├── CodeEditor.tsx   # 代码编辑器
-│   ├── TokenDisplay.tsx # Token展示
-│   ├── ASTDisplay.tsx   # AST可视化
-│   ├── BytecodeDisplay.tsx # 字节码展示
-│   ├── ExecutionDisplay.tsx # 执行过程
-│   └── OutputDisplay.tsx # 结果输出
-├── compiler/           # 编译器核心
-│   ├── lexer.ts        # 词法分析器
-│   ├── parser.ts       # 语法分析器
-│   ├── codegen.ts      # 代码生成器
-│   ├── vm.ts           # 虚拟机
-│   └── stepvm.ts       # 步进虚拟机
-├── types/              # 类型定义
-└── App.tsx             # 主应用
+├── components/          # React Components
+│   ├── CodeEditor.tsx   # Code editor
+│   ├── TokenDisplay.tsx # Token display
+│   ├── ASTDisplay.tsx   # AST visualization
+│   ├── BytecodeDisplay.tsx # Bytecode display
+│   ├── ExecutionDisplay.tsx # Execution process
+│   └── OutputDisplay.tsx # Result output
+├── compiler/           # Compiler Core
+│   ├── lexer.ts        # Lexical analyzer
+│   ├── parser.ts       # Syntax parser
+│   ├── codegen.ts      # Code generator
+│   ├── vm.ts           # Virtual machine
+│   └── stepvm.ts       # Step-by-step virtual machine
+├── types/              # Type definitions
+└── App.tsx             # Main application
 ```
 
-## 🎓 使用示例
+## 🎓 Usage Examples
 
-1. **试试基本运算**: 输入 `5 + 3 * 2`
-   - 观察Token: `[NUMBER(5), PLUS(+), NUMBER(3), MULTIPLY(*), NUMBER(2)]`
-   - 查看AST: 乘法节点在加法节点右侧(优先级)
-   - 执行步骤: `PUSH 5` → `PUSH 3` → `PUSH 2` → `MUL` → `ADD`
+1. **Try Basic Operations**: Input `5 + 3 * 2`
+   - Observe Tokens: `[NUMBER(5), PLUS(+), NUMBER(3), MULTIPLY(*), NUMBER(2)]`
+   - View AST: Multiplication node on the right side of addition node (precedence)
+   - Execution Steps: `PUSH 5` → `PUSH 3` → `PUSH 2` → `MUL` → `ADD`
 
-2. **括号改变优先级**: 输入 `(5 + 3) * 2`
-   - AST结构变化: 加法节点在乘法节点左侧
-   - 执行顺序: 先计算括号内加法，再乘法
+2. **Parentheses Change Precedence**: Input `(5 + 3) * 2`
+   - AST Structure Change: Addition node on the left side of multiplication node
+   - Execution Order: Calculate addition in parentheses first, then multiplication
 
-3. **步进调试**: 使用"上一步"/"下一步"按钮
-   - 观察每一步的栈状态变化
-   - 理解栈式计算机的工作原理
+3. **Step-by-step Debugging**: Use "Previous"/"Next" buttons
+   - Observe stack state changes at each step
+   - Understand how stack-based computers work
 
-## 🤝 贡献
+## 🤝 Contributing
 
-欢迎提交Issue和Pull Request来改进这个项目！
+Welcome to submit Issues and Pull Requests to improve this project!
 
-## 📄 许可证
+## 📄 License
 
 MIT License
 
-## 📞 联系
+## 📞 Contact
 
-如有问题或建议，请创建Issue或联系项目维护者。
+For questions or suggestions, please create an Issue or contact the project maintainers.
