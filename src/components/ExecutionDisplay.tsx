@@ -44,9 +44,9 @@ export function ExecutionDisplay({ execution, currentStep = 0, onStepChange }: E
         </span>
       </div>
 
-      {/* 当前指令 */}
+      {/* Current instruction */}
       <div className="mb-3">
-        <div className="text-xs text-gray-600 mb-1">当前指令:</div>
+        <div className="text-xs text-gray-600 mb-1">Current Instruction:</div>
         <div className="bg-blue-50 p-2 rounded text-sm font-mono">
           {step.instruction}
         </div>
@@ -55,17 +55,17 @@ export function ExecutionDisplay({ execution, currentStep = 0, onStepChange }: E
         </div>
       </div>
 
-      {/* 栈状态 */}
+      {/* Stack state */}
       <div className="flex-1">
-        <div className="text-xs text-gray-600 mb-2">栈状态变化:</div>
+        <div className="text-xs text-gray-600 mb-2">Stack State Changes:</div>
 
         <div className="grid grid-cols-2 gap-2 text-xs">
-          {/* 执行前栈状态 */}
+          {/* Before execution stack state */}
           <div>
-            <div className="text-gray-500 mb-1">执行前:</div>
+            <div className="text-gray-500 mb-1">Before:</div>
             <div className="bg-gray-50 p-2 rounded min-h-16">
               {step.stackBefore.length === 0 ? (
-                <div className="text-gray-400">空栈</div>
+                <div className="text-gray-400">Empty Stack</div>
               ) : (
                 <div className="space-y-1">
                   {step.stackBefore.slice().reverse().map((value, index) => (
@@ -78,12 +78,12 @@ export function ExecutionDisplay({ execution, currentStep = 0, onStepChange }: E
             </div>
           </div>
 
-          {/* 执行后栈状态 */}
+          {/* After execution stack state */}
           <div>
-            <div className="text-gray-500 mb-1">执行后:</div>
+            <div className="text-gray-500 mb-1">After:</div>
             <div className="bg-green-50 p-2 rounded min-h-16">
               {step.stackAfter.length === 0 ? (
-                <div className="text-gray-400">空栈</div>
+                <div className="text-gray-400">Empty Stack</div>
               ) : (
                 <div className="space-y-1">
                   {step.stackAfter.slice().reverse().map((value, index) => (

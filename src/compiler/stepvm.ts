@@ -60,7 +60,7 @@ export class SteppingVirtualMachine {
         const varName = parts[1];
         const varValue = this.variables.get(varName);
         if (varValue === undefined) {
-          throw new Error(`未定义的变量: ${varName}`);
+          throw new Error(`Undefined variable: ${varName}`);
         }
         this.stack.push(varValue);
         break;
@@ -79,7 +79,7 @@ export class SteppingVirtualMachine {
 
       case 'DIV':
         this.binaryOperation((a, b) => {
-          if (b === 0) throw new Error('除零错误');
+          if (b === 0) throw new Error('Division by zero');
           return a / b;
         });
         break;
@@ -90,14 +90,14 @@ export class SteppingVirtualMachine {
 
       case 'NEG':
         if (this.stack.length < 1) {
-          throw new Error('栈下溢');
+          throw new Error('Stack underflow');
         }
         const operand = this.stack.pop()!;
         this.stack.push(-operand);
         break;
 
       default:
-        throw new Error(`未知指令: ${instruction}`);
+        throw new Error(`Unknown instruction: ${instruction}`);
     }
   }
 
@@ -122,29 +122,29 @@ export class SteppingVirtualMachine {
 
     switch (opcode) {
       case 'PUSH':
-        return `将数值 ${parts[1]} 压入栈`;
+        return `Push value ${parts[1]} onto stack`;
       case 'LOAD':
-        return `加载变量 ${parts[1]} 的值`;
+        return `Load variable ${parts[1]} value`;
       case 'ADD':
         const [addA, addB] = stackBefore.slice(-2);
-        return `计算 ${addA} + ${addB} = ${stackAfter[stackAfter.length - 1]}`;
+        return `Calculate ${addA} + ${addB} = ${stackAfter[stackAfter.length - 1]}`;
       case 'SUB':
         const [subA, subB] = stackBefore.slice(-2);
-        return `计算 ${subA} - ${subB} = ${stackAfter[stackAfter.length - 1]}`;
+        return `Calculate ${subA} - ${subB} = ${stackAfter[stackAfter.length - 1]}`;
       case 'MUL':
         const [mulA, mulB] = stackBefore.slice(-2);
-        return `计算 ${mulA} * ${mulB} = ${stackAfter[stackAfter.length - 1]}`;
+        return `Calculate ${mulA} * ${mulB} = ${stackAfter[stackAfter.length - 1]}`;
       case 'DIV':
         const [divA, divB] = stackBefore.slice(-2);
-        return `计算 ${divA} / ${divB} = ${stackAfter[stackAfter.length - 1]}`;
+        return `Calculate ${divA} / ${divB} = ${stackAfter[stackAfter.length - 1]}`;
       case 'POW':
         const [powA, powB] = stackBefore.slice(-2);
-        return `计算 ${powA} ^ ${powB} = ${stackAfter[stackAfter.length - 1]}`;
+        return `Calculate ${powA} ^ ${powB} = ${stackAfter[stackAfter.length - 1]}`;
       case 'NEG':
         const negOperand = stackBefore[stackBefore.length - 1];
-        return `计算 -${negOperand} = ${stackAfter[stackAfter.length - 1]}`;
+        return `Calculate -${negOperand} = ${stackAfter[stackAfter.length - 1]}`;
       default:
-        return `执行指令: ${instruction}`;
+        return `Execute instruction: ${instruction}`;
     }
   }
 

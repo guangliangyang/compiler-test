@@ -8,15 +8,15 @@ export function OutputDisplay({ result, error }: OutputDisplayProps) {
     <div className="p-4 h-full">
       {error ? (
         <div className="text-red-600 text-sm">
-          <strong>错误:</strong> {error}
+          <strong>Error:</strong> {error}
         </div>
       ) : result !== null ? (
         <div className="text-green-600 text-lg font-mono">
-          <strong>结果:</strong> {result}
+          <strong>Result:</strong> {result}
         </div>
       ) : (
         <div className="text-gray-500 text-sm">
-          等待执行结果...
+          Waiting for execution result...
         </div>
       )}
     </div>
