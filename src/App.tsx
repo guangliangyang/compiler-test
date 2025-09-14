@@ -74,35 +74,35 @@ function App() {
   return (
     <div className="h-screen bg-gray-100 flex flex-col">
       <header className="bg-blue-600 text-white p-4">
-        <h1 className="text-2xl font-bold">Compiler Demo - 编译器演示</h1>
-        <p className="text-blue-100">了解编译器的基本原理和工作过程</p>
+        <h1 className="text-2xl font-bold">Compiler Demo - Interactive Visualization</h1>
+        <p className="text-blue-100">Learn compiler principles and working process through interactive visualization</p>
       </header>
 
       <main className="flex-1 grid grid-cols-3 grid-rows-3 gap-4 p-4 overflow-hidden">
         <div className="bg-white rounded-lg shadow-md">
           <div className="bg-gray-50 px-4 py-2 border-b">
-            <h2 className="font-semibold text-gray-700">源代码输入</h2>
+            <h2 className="font-semibold text-gray-700">Source Code Input</h2>
           </div>
           <CodeEditor value={code} onChange={handleCodeChange} />
         </div>
 
         <div className="bg-white rounded-lg shadow-md">
           <div className="bg-gray-50 px-4 py-2 border-b">
-            <h2 className="font-semibold text-gray-700">词法分析结果</h2>
+            <h2 className="font-semibold text-gray-700">Lexical Analysis</h2>
           </div>
           <TokenDisplay tokens={result.tokens} error={result.error} />
         </div>
 
         <div className="bg-white rounded-lg shadow-md">
           <div className="bg-gray-50 px-4 py-2 border-b">
-            <h2 className="font-semibold text-gray-700">语法分析树</h2>
+            <h2 className="font-semibold text-gray-700">Syntax Analysis Tree</h2>
           </div>
           <ASTDisplay ast={result.ast} />
         </div>
 
         <div className="bg-white rounded-lg shadow-md">
           <div className="bg-gray-50 px-4 py-2 border-b">
-            <h2 className="font-semibold text-gray-700">字节码生成</h2>
+            <h2 className="font-semibold text-gray-700">Bytecode Generation</h2>
           </div>
           <BytecodeDisplay
             bytecode={result.bytecode}
@@ -113,7 +113,7 @@ function App() {
 
         <div className="bg-white rounded-lg shadow-md">
           <div className="bg-gray-50 px-4 py-2 border-b">
-            <h2 className="font-semibold text-gray-700">执行过程</h2>
+            <h2 className="font-semibold text-gray-700">Execution Process</h2>
           </div>
           <ExecutionDisplay
             execution={result.execution}
@@ -124,7 +124,7 @@ function App() {
 
         <div className="bg-white rounded-lg shadow-md">
           <div className="bg-gray-50 px-4 py-2 border-b">
-            <h2 className="font-semibold text-gray-700">输出结果</h2>
+            <h2 className="font-semibold text-gray-700">Output Results</h2>
           </div>
           <OutputDisplay result={result.result} error={result.error} />
         </div>

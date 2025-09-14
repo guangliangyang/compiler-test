@@ -59,12 +59,12 @@ export function ASTDisplay({ ast }: ASTDisplayProps) {
     <div className="p-4 h-full overflow-auto">
       {ast ? (
         <div className="text-sm">
-          <div className="mb-2 text-gray-600 font-semibold">抽象语法树 (AST):</div>
+          <div className="mb-2 text-gray-600 font-semibold">Abstract Syntax Tree (AST):</div>
           {renderASTNode(ast)}
         </div>
       ) : (
         <div className="text-gray-500 text-sm">
-          输入表达式查看语法树...
+          Enter expression to view syntax tree...
         </div>
       )}
     </div>

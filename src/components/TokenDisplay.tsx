@@ -10,7 +10,7 @@ export function TokenDisplay({ tokens, error }: TokenDisplayProps) {
     return (
       <div className="p-4 h-full">
         <div className="text-red-600 text-sm">
-          <strong>错误:</strong> {error}
+          <strong>Error:</strong> {error}
         </div>
       </div>
     );

@@ -12,7 +12,7 @@ export function ExecutionDisplay({ execution, currentStep = 0, onStepChange }: E
     return (
       <div className="p-4 h-full">
         <div className="text-gray-500 text-sm">
-          等待执行过程...
+          Waiting for execution process...
         </div>
       </div>
     );
@@ -23,21 +23,21 @@ export function ExecutionDisplay({ execution, currentStep = 0, onStepChange }: E
 
   return (
     <div className="p-4 h-full flex flex-col">
-      {/* 控制按钮 */}
+      {/* Control buttons */}
       <div className="flex items-center space-x-2 mb-4 pb-2 border-b">
         <button
           onClick={() => onStepChange?.(Math.max(0, currentStep - 1))}
           disabled={currentStep === 0}
           className="px-2 py-1 bg-blue-500 text-white rounded disabled:bg-gray-300 text-xs"
         >
-          上一步
+          Previous
         </button>
         <button
           onClick={() => onStepChange?.(Math.min(maxStep, currentStep + 1))}
           disabled={currentStep === maxStep}
           className="px-2 py-1 bg-blue-500 text-white rounded disabled:bg-gray-300 text-xs"
         >
-          下一步
+          Next
         </button>
         <span className="text-xs text-gray-600">
           {currentStep + 1} / {execution.steps.length}
