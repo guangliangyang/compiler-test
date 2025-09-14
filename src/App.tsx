@@ -10,7 +10,7 @@ import { Parser } from './compiler/parser'
 import { CodeGenerator } from './compiler/codegen'
 import { VirtualMachine } from './compiler/vm'
 import { SteppingVirtualMachine } from './compiler/stepvm'
-import { CompilationResult } from './types'
+import type { CompilationResult } from './types'
 
 function App() {
   const [code, setCode] = useState('5 + 3 * 2')
@@ -48,7 +48,7 @@ function App() {
 
         // 生成步进执行状态
         const stepVm = new SteppingVirtualMachine()
-        const executionState = stepVm.executeWithSteps(bytecode)
+        executionState = stepVm.executeWithSteps(bytecode)
       } catch (parseError) {
         // If parsing fails, still show tokens
       }

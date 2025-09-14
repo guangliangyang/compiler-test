@@ -1,4 +1,5 @@
-import { ASTNode, ASTNodeType } from '../types';
+import type { ASTNode } from '../types';
+import { ASTNodeType } from '../types';
 
 export class CodeGenerator {
   private instructions: string[] = [];

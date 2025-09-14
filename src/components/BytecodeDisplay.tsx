@@ -1,4 +1,4 @@
-import { ExecutionState } from '../types';
+import type { ExecutionState } from '../types';
 
 interface BytecodeDisplayProps {
   bytecode: string[];

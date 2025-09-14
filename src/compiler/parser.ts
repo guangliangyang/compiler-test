@@ -1,4 +1,5 @@
-import { Token, TokenType, ASTNode, ASTNodeType } from '../types';
+import type { Token, ASTNode } from '../types';
+import { TokenType, ASTNodeType } from '../types';
 
 export class Parser {
   private tokens: Token[];

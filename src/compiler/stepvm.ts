@@ -1,4 +1,4 @@
-import { ExecutionStep, ExecutionState } from '../types';
+import type { ExecutionStep, ExecutionState } from '../types';
 
 export class SteppingVirtualMachine {
   private stack: number[] = [];

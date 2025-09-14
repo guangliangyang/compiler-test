@@ -1,10 +1,11 @@
-import { ASTNode, ASTNodeType } from '../types';
+import type { ASTNode } from '../types';
+import { ASTNodeType } from '../types';
 
 interface ASTDisplayProps {
   ast: ASTNode | null;
 }
 
-function renderASTNode(node: ASTNode, depth: number = 0): JSX.Element {
+function renderASTNode(node: ASTNode, depth: number = 0): React.JSX.Element {
   const indent = depth * 20;
 
   return (
