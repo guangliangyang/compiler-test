@@ -35,10 +35,26 @@ export interface ASTNode {
   name?: string;
 }
 
+export interface ExecutionStep {
+  instruction: string;
+  instructionIndex: number;
+  stackBefore: number[];
+  stackAfter: number[];
+  description: string;
+}
+
+export interface ExecutionState {
+  steps: ExecutionStep[];
+  currentStep: number;
+  isRunning: boolean;
+  isComplete: boolean;
+}
+
 export interface CompilationResult {
   tokens: Token[];
   ast: ASTNode | null;
   bytecode: string[];
   result: number | null;
+  execution?: ExecutionState;
   error?: string;
 }

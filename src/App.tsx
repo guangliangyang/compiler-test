@@ -9,6 +9,7 @@ import { Lexer } from './compiler/lexer'
 import { Parser } from './compiler/parser'
 import { CodeGenerator } from './compiler/codegen'
 import { VirtualMachine } from './compiler/vm'
+import { SteppingVirtualMachine } from './compiler/stepvm'
 import { CompilationResult } from './types'
 
 function App() {
@@ -19,9 +20,11 @@ function App() {
     bytecode: [],
     result: null,
   })
+  const [currentExecutionStep, setCurrentExecutionStep] = useState(0)
 
   const handleCodeChange = (newCode: string) => {
     setCode(newCode)
+    setCurrentExecutionStep(0) // 重置执行步骤
     try {
       const lexer = new Lexer(newCode)
       const tokens = lexer.tokenize()
@@ -29,6 +32,7 @@ function App() {
       let ast = null;
       let bytecode: string[] = [];
       let result = null;
+      let executionState = undefined;
 
       try {
         const parser = new Parser(tokens)
@@ -41,6 +45,10 @@ function App() {
         // 执行字节码
         const vm = new VirtualMachine()
         result = vm.execute(bytecode)
+
+        // 生成步进执行状态
+        const stepVm = new SteppingVirtualMachine()
+        const executionState = stepVm.executeWithSteps(bytecode)
       } catch (parseError) {
         // If parsing fails, still show tokens
       }
@@ -50,6 +58,7 @@ function App() {
         ast,
         bytecode,
         result,
+        execution: executionState,
       })
     } catch (error) {
       setResult({
@@ -95,14 +104,22 @@ function App() {
           <div className="bg-gray-50 px-4 py-2 border-b">
             <h2 className="font-semibold text-gray-700">字节码生成</h2>
           </div>
-          <BytecodeDisplay bytecode={result.bytecode} />
+          <BytecodeDisplay
+            bytecode={result.bytecode}
+            execution={result.execution}
+            currentStep={currentExecutionStep}
+          />
         </div>
 
         <div className="bg-white rounded-lg shadow-md">
           <div className="bg-gray-50 px-4 py-2 border-b">
             <h2 className="font-semibold text-gray-700">执行过程</h2>
           </div>
-          <ExecutionDisplay />
+          <ExecutionDisplay
+            execution={result.execution}
+            currentStep={currentExecutionStep}
+            onStepChange={setCurrentExecutionStep}
+          />
         </div>
 
         <div className="bg-white rounded-lg shadow-md">
